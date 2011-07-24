@@ -18,13 +18,13 @@
 
 #include "zip_crack.h"
 
-struct buffer{
-	char array[BUFFER_LENGTH][BUFFER_PASS_LENGTH];
-	unsigned int first_pos;
-	unsigned int last_pos;
-	unsigned int nb_elem;
-	unsigned int size;
-	sem_t *mutex;
+struct buffer {
+    char array[BUFFER_LENGTH][BUFFER_PASS_LENGTH];
+    unsigned int first_pos;
+    unsigned int last_pos;
+    unsigned int nb_elem;
+    unsigned int size;
+    sem_t *mutex;
 };
 typedef struct buffer buffer;
 
@@ -42,7 +42,7 @@ buffer* bounded_buffer_proc_new(key_t key);
 */
 int bounded_buffer_put(buffer *buf,  char* str);
 
-/* 
+/*
 * Removes and return the first added entry in the buffer
 * returns NULL if buffer empty
 * @param buf the buffer

@@ -18,13 +18,13 @@
 #define SEM_EMPTY "semEmpty"
 #define BB_KEY	5678
 #define PARAMS_KEY 1234
-struct params{
-	buffer* buf;
-	char* dictionary;
-	char* zipfile;
-	bool found;
-	sem_t* empty;
-	sem_t* full;
+struct params {
+    buffer* buf;
+    char* dictionary;
+    char* zipfile;
+    bool found;
+    sem_t* empty;
+    sem_t* full;
 };
 
 typedef struct params params;
@@ -36,7 +36,7 @@ void* fill_buffer(void* arg);
 
 
 /*
-* Starts cracking the password with words from the bounded buffer 
+* Starts cracking the password with words from the bounded buffer
 * @param: arg : a struct contining the buffer and the filename to crack
 */
 void* crack_password(void* arg);
@@ -49,7 +49,7 @@ void* crack_password(void* arg);
 void create_threads(unsigned int nb_threads, char* file_to_crack, char* dictionary_file);
 
 
-/*          
+/*
 * Create nb_process process and starts the crack routine
 * @params nb_process: the number of process to be created
 * @params p : params containing the buffer and the filename of the file to crack (see params declaration on top of file)
@@ -78,7 +78,7 @@ params*  get_mem_segment(key_t key );
 
 /*
  * Frees the memory of key key
- * 
+ *
  */
 void free_mem_segment(key_t key);
 
