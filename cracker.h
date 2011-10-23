@@ -18,7 +18,8 @@
 #define SEM_EMPTY "semEmpty"
 #define BB_KEY	5678
 #define PARAMS_KEY 1234
-struct params {
+struct params
+{
     buffer* buf;
     char* dictionary;
     char* zipfile;

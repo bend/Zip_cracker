@@ -85,6 +85,8 @@ create_threads(unsigned int nb_threads, char* file_to_crack, char* dictionary_fi
 		crack_params->buf = bounded_buffer_new();
 		crack_params->zipfile= file_to_crack;
 		crack_params->dictionary= dictionary_file;
+		sem_unlink(SEM_EMPTY);
+		sem_unlink(SEM_FULL);
 		crack_params->empty = sem_open(SEM_EMPTY, O_CREAT, 0666, crack_params->buf->size);;
 		crack_params->full = sem_open(SEM_FULL, O_CREAT, 0666, 0);
 		crack_params->found = false;
@@ -132,6 +134,8 @@ void create_process(unsigned int nb_process, char* file_to_crack, char* dictiona
 		shared->dictionary=dictionary_file;
 		shared->zipfile = file_to_crack;
 		shared->found = false;
+		sem_unlink(SEM_EMPTY);
+		sem_unlink(SEM_FULL);
 		shared->empty = sem_open(SEM_EMPTY,O_CREAT,0666,shared->buf->size);  
 		shared->full = sem_open(SEM_FULL,O_CREAT,0666,0);             
 		for(i=0; i<nb_process+1; i++){
