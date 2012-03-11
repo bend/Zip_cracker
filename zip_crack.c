@@ -94,14 +94,10 @@ zip_load_archive (const char * file)
 {
     FILE *f;
     uint32_t id;
-    uint16_t version;
     uint16_t flags;
-    uint16_t compression_method;
     uint16_t lastmodtime;
-    uint16_t lastmoddate;
     uint32_t crc32;
     uint32_t compr_size;
-    uint32_t uncompr_size;
     uint16_t name_len;
     uint16_t extra_field_len;
     char zip_path[1024];
@@ -121,14 +117,10 @@ zip_load_archive (const char * file)
     while (!feof(f)) {
         id = _fgetu32(f);
         if (id == 0x04034b50UL) {
-            version = _fgetu16(f);
             flags = _fgetu16(f);
-            compression_method = _fgetu16(f);
             lastmodtime = _fgetu16(f);
-            lastmoddate = _fgetu16(f);
             crc32 = _fgetu32(f);
             compr_size = _fgetu32(f);
-            uncompr_size = _fgetu32(f);
             name_len = _fgetu16(f);
             extra_field_len = _fgetu16(f);
 

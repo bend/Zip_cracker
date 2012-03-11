@@ -1,7 +1,9 @@
-CFLAGS+=-W -Wall -Lpthread -Werror -ansi -pedantic 
+CFLAGS+=-W -Wall -Lpthread -Werror -ansi -pedantic  -std=gnu99
+LDFLAGS+= -lpthread
 EXEC=zipcrack
 SOURCES=$(wildcard *.c)
 OBJECTS=$(SOURCES:.c=.o)
+CC=gcc
 
 all: $(EXEC)
 debug: CFLAGS+= -DDEBUG -g

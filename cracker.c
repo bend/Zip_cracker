@@ -67,7 +67,6 @@ create_threads(unsigned int nb_threads, char* file_to_crack, char* dictionary_fi
 	pthread_t *threads;										/*Array of threads*/
 	int rc;
 	unsigned int i;
-	int pthread_join_res;
 	params *crack_params;
 		sem_unlink(SEM_FULL);
 		sem_unlink(SEM_EMPTY);
@@ -109,7 +108,7 @@ create_threads(unsigned int nb_threads, char* file_to_crack, char* dictionary_fi
 			exit(-1);
 		}
 		for(i=0; i<nb_threads+1; i++)
-			pthread_join_res = pthread_join(threads[i], NULL);
+			pthread_join(threads[i], NULL);
 		bounded_buffer_free(crack_params->buf);
 		free(crack_params);
 		free(threads);

@@ -10,6 +10,7 @@
 #include <sys/shm.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <sys/wait.h>
 
 #include "bounded_buffer.h"
 #include "file_reader.h"
